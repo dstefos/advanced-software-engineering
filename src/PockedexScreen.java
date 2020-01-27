@@ -65,7 +65,7 @@ public class PockedexScreen extends JFrame {
 		contentPane.add(list);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(PockedexScreen.class.getResource("/images2/pokeball1.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(PockedexScreen.class.getResource("pokeball1.jpg")));
 		lblNewLabel.setBounds(10, 11, 71, 30);
 		contentPane.add(lblNewLabel);
 		
