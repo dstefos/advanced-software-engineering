@@ -56,10 +56,8 @@ public class PokedexPokemon {
 		btnChoosePokemon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				//grafeis edw ton kwdika to ti thes na kaneis
-				//ti thes n akanei?
-				//paw na ntythw ligo grapse ti thes na kanei tha to dw se ligo vgesss
-				//vgessss
+				PockedexScreen pd = new PockedexScreen();
+				pd.setVisible(true);
 				
 			}
 		});
