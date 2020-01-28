@@ -94,47 +94,47 @@ public class Pokemon
 		
 	}
 	
-    public void nameOfThePokemon()
-    {
-    	System.out.println("The name of Pokemon is: ");
-    	
-    }
-	
-    public void typeOfThePokemon()
-    {
-    	System.out.println("The type of Pokemon is: ");	
-    	
-    }
-    
-    public void soundOfThePokemon()
-    {
-    	System.out.println("Pokemon is making a sound: ");
-    	
-    }
-    
-    public void heightOfThePokemon()
-    {
-    	System.out.println("The height of Pokemon is: ");
-    	
-    }
-    
-    public void weightOfThePokemon()
-    {
-    	System.out.println("The weight of Pokemon is: ");
-    	
-    }
-    
-    public void attack1OfThePokemon()
-    {
-    	System.out.println("Pokemon's first attack is: ");
-    	
-    }
-    
-    public void attack2OfThePokemon()
-    {
-    	System.out.println("Pokemon's second attack is: ");
-    	
-    }
+//    public void nameOfThePokemon()
+//    {
+//    	System.out.println("The name of Pokemon is: ");
+//    	
+//    }
+//	
+//    public void typeOfThePokemon()
+//    {
+//    	System.out.println("The type of Pokemon is: ");	
+//    	
+//    }
+//    
+//    public void soundOfThePokemon()
+//    {
+//    	System.out.println("Pokemon is making a sound: ");
+//    	
+//    }
+//    
+//    public void heightOfThePokemon()
+//    {
+//    	System.out.println("The height of Pokemon is: ");
+//    	
+//    }
+//    
+//    public void weightOfThePokemon()
+//    {
+//    	System.out.println("The weight of Pokemon is: ");
+//    	
+//    }
+//    
+//    public void attack1OfThePokemon()
+//    {
+//    	System.out.println("Pokemon's first attack is: ");
+//    	
+//    }
+//    
+//    public void attack2OfThePokemon()
+//    {
+//    	System.out.println("Pokemon's second attack is: ");
+//    	
+//    }
     
  
 }
