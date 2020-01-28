@@ -59,11 +59,19 @@ public class Main
 				System.out.println(counter+". " +i.getName());
 				counter++;
 			}
-			System.out.println(counter+1+". " +"Exit");    
+			System.out.println("Negative number. Exit");    
 			
 			
 			Scanner scan=new Scanner(System.in);
 		    int option=scan.nextInt();
+		    if(option<0) {
+		    	System.out.println("Bye...");
+			   	System.exit(0);
+		    }
+		    else if(option>pokemons.size()-1) {
+		    	System.out.println("Pokemon not found! Try Again");
+		    	continue;
+		    }
 		    
 		    System.out.println("*********************************");
 		    
