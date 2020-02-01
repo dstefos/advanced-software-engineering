@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.JList;
 import java.awt.Color;
 import java.awt.Label;
@@ -95,5 +97,24 @@ public class PockedexScreen extends JFrame {
 		));
 		table.getColumnModel().getColumn(0).setResizable(false);
 		scrollPane.setViewportView(table);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setBounds(405, 102, 221, 205);
+		contentPane.add(lblNewLabel_1);
+		 JLabel lblNewLabel_2 = new JLabel("Pokemon name");
+ 		lblNewLabel_2.setBounds(405, 102, 221, 205);
+ 		contentPane.add(lblNewLabel_2);
+		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+	        public void valueChanged(ListSelectionEvent event) {
+	            String PokemonName=table.getValueAt(table.getSelectedRow(), 0).toString();
+	            // print first column value from selected row
+	        	lblNewLabel_1.setIcon(new ImageIcon("Images/"+PokemonName+".jpg"));
+	            System.out.println(PokemonName);
+	            lblNewLabel_2.setText(PokemonName);
+	            
+	        }
+
+			
+	    });
 	}
 }
