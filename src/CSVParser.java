@@ -4,11 +4,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CsvParser {
+public class CSVParser {
 	
 	private String file;
 	
-	public CsvParser(String tempFileName) {
+	public CSVParser(String tempFileName) {
 		file=tempFileName;
 	}
 	
@@ -27,7 +27,7 @@ public class CsvParser {
 	}
 	
 	public static void main(String[] args) throws IOException {
-		CsvParser parser= new CsvParser("test.csv");
+		CSVParser parser= new CSVParser("test.csv");
 		ArrayList<String[]> lista=parser.readData();
 		for(String[] line: lista) {
 			for(String text: line)

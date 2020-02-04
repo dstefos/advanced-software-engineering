@@ -1,140 +1,130 @@
 
 public class Pokemon 
-{
+{	
 	
-	private String name;
-	private String typeOfPokemon;
-	private String sound;
-	private double weight;
-	private double height;
-	private String attack1;
-	private String attack2;
-	
-	
-	public Pokemon(String name,String typeOfPokemon,String sound,double height,double weight,String attack1,String attack2)
+	private int id,total,hp,attack,defence,attack2,defence2,speed,generation;
+	private String name,typeOfPokemon,typeOfPokemon2;
+	private boolean isLegendary;
+
+	public Pokemon(int id, String name, String typeOfPokemon, String typeOfPokemon2, int total, int hp, int attack, int defence, int attack2, int defence2, int speed, int generation, boolean isLegendary)
 	{   
-		this.name=name;
-		this.typeOfPokemon=typeOfPokemon;
-		this.sound=sound;
-		this.weight=weight;
-		this.height=height;
-		this.attack1=attack1;
-		this.attack2=attack2;
-		
-	}
-    
-	public String getName() 
-	{
-		return name;
-	}
-
-	public void setName(String name) 
-	{
+		this.id = id;
 		this.name = name;
-	}
-	
-	public String getTypeOfPokemon() 
-	{
-		return typeOfPokemon;
-	}
-
-	public void setTypeOfPokemon(String typeOfPokemon) 
-	{
-		this.typeOfPokemon = typeOfPokemon;
-	}
-
-	public String getSound() 
-	{
-		return sound;
+		this.typeOfPokemon = typeOfPokemon;		
+		this.typeOfPokemon2 = typeOfPokemon2;
+		this.total = total;
+		this.hp = hp;
+		this.attack= attack;
+		this.defence = defence;
+		this.attack2 = attack2;
+		this.defence2 = defence2;
+		this.speed = speed;
+		this.generation = generation;
+		this.isLegendary = isLegendary;
 	}
 
-	public void setSound(String sound)
-	{
-		this.sound = sound;
+	public int getId() {
+		return id;
 	}
 
-	public double getHeight() 
-	{
-		return height;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setHeight(double height) 
-	{
-		this.height = height;
-	}
-	
-	public double getWeight() 
-	{
-		return weight;
+	public int getTotal() {
+		return total;
 	}
 
-	public void setWeight(double weight) 
-	{
-		this.weight = weight;
+	public void setTotal(int total) {
+		this.total = total;
 	}
 
-	public String getAttack1() 
-	{
-		return attack1;
+	public int getHp() {
+		return hp;
 	}
 
-	public void setAttack1(String attacks) 
-	{
-		this.attack1 = attacks;
+	public void setHp(int hp) {
+		this.hp = hp;
 	}
 
+	public int getAttack() {
+		return attack;
+	}
 
-	public String getAttack2() {
+	public void setAttack(int attack) {
+		this.attack = attack;
+	}
+
+	public int getDefence() {
+		return defence;
+	}
+
+	public void setDefence(int defence) {
+		this.defence = defence;
+	}
+
+	public int getAttack2() {
 		return attack2;
 	}
 
-	public void setAttack2(String attack2)
-	{
+	public void setAttack2(int attack2) {
 		this.attack2 = attack2;
-		
 	}
-	
-//    public void nameOfThePokemon()
-//    {
-//    	System.out.println("The name of Pokemon is: ");
-//    	
-//    }
-//	
-//    public void typeOfThePokemon()
-//    {
-//    	System.out.println("The type of Pokemon is: ");	
-//    	
-//    }
-//    
-//    public void soundOfThePokemon()
-//    {
-//    	System.out.println("Pokemon is making a sound: ");
-//    	
-//    }
-//    
-//    public void heightOfThePokemon()
-//    {
-//    	System.out.println("The height of Pokemon is: ");
-//    	
-//    }
-//    
-//    public void weightOfThePokemon()
-//    {
-//    	System.out.println("The weight of Pokemon is: ");
-//    	
-//    }
-//    
-//    public void attack1OfThePokemon()
-//    {
-//    	System.out.println("Pokemon's first attack is: ");
-//    	
-//    }
-//    
-//    public void attack2OfThePokemon()
-//    {
-//    	System.out.println("Pokemon's second attack is: ");
-//    	
-//    }
-    
- 
+
+	public int getDefence2() {
+		return defence2;
+	}
+
+	public void setDefence2(int defence2) {
+		this.defence2 = defence2;
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
+	public int getGeneration() {
+		return generation;
+	}
+
+	public void setGeneration(int generation) {
+		this.generation = generation;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getTypeOfPokemon() {
+		return typeOfPokemon;
+	}
+
+	public void setTypeOfPokemon(String typeOfPokemon) {
+		this.typeOfPokemon = typeOfPokemon;
+	}
+
+	public String getTypeOfPokemon2() {
+		return typeOfPokemon2;
+	}
+
+	public void setTypeOfPokemon2(String typeOfPokemon2) {
+		this.typeOfPokemon2 = typeOfPokemon2;
+	}
+
+	public boolean isLegendary() {
+		return isLegendary;
+	}
+
+	public void setLegendary(boolean isLegendary) {
+		this.isLegendary = isLegendary;
+	}
+
 }
