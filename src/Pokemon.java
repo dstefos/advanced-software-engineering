@@ -127,4 +127,7 @@ public class Pokemon
 		this.isLegendary = isLegendary;
 	}
 
+	 public String toString(){//overriding the toString() method  
+	  return String.format("Id: %1$s, : %2$s, : %3$s, : %4$s, : %5$s, : %6$s, : %7$s, : %8$s, : %9$s, : %10$s, : %11$s, : %12$s, : %13$s ", this.getId(), this.getName(), this.getTypeOfPokemon(), this.getTypeOfPokemon2(), this.getTotal(), this.getHp(), this.getAttack(), this.getDefence(), this.getAttack2(), this.getDefence2(), this.getSpeed(), this.getGeneration(), this.isLegendary());  
+	 }  
 }
