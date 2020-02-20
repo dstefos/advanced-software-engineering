@@ -6,6 +6,7 @@ import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -56,8 +57,14 @@ public class PokedexPokemon {
 		btnChoosePokemon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				PockedexScreen pd = new PockedexScreen();
-				pd.setVisible(true);
+				PockedexScreen pd;
+				try {
+					pd = new PockedexScreen();
+					pd.setVisible(true);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 			}
 		});

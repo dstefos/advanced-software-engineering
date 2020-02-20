@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class CSVParser {
 	
 // Read pokemons' data from external CSV, and return an array list of Pokemons 
-	public static ArrayList<Pokemon> readData(String file) throws IOException { 
+	public static Pokemon[] readData(String file) throws IOException { 
 	    ArrayList<String[]> content = new ArrayList<>();
 	    
 //		Read CSV
@@ -22,10 +22,11 @@ public class CSVParser {
 	    }
 	    
 // 		Create a new Pokemon ArrayList and seed the above data
-		ArrayList<Pokemon> pokemons = new ArrayList<Pokemon>();		
+		Pokemon pokemons[] = new Pokemon[content.size()];		
 		
 //		For each line of the CSV data, create a new Pokemon instance according to the corresponding data
-		for(String[] line: content) {			
+		for(int i=0; i<content.size(); i++) {
+			String[] line=content.get(i);
 			int id = Integer.parseInt(line[0]);					
 			String name = line[1];			
 			String typeofpokemon = line[2];		
@@ -42,7 +43,8 @@ public class CSVParser {
 			Pokemon tempPokemon=new Pokemon(id,name,typeofpokemon,typeofpokemon2,total,hp,attack,defence,attack2,defence2,speed,generation,legendary);			
 
 //			Push the newly created Pokemon into the temp Pokemon ArrayList
-			pokemons.add(tempPokemon);
+			pokemons[i]=tempPokemon;
+//			pokemons.add(tempPokemon);
 		}
 		
 	    return pokemons;
@@ -50,7 +52,7 @@ public class CSVParser {
 	
 	public static void main(String[] args) throws IOException {
 //		CSVParser parser= new CSVParser("pokemons.csv");
-		ArrayList<Pokemon> lista=CSVParser.readData("pokemons.csv");
+		Pokemon[] lista=CSVParser.readData("pokemons.csv");
 		
 //		Print all pokemons in pokemons.csv
 		for(Pokemon tempPokemon: lista) 

@@ -128,6 +128,6 @@ public class Pokemon
 	}
 
 	 public String toString(){//overriding the toString() method  
-	  return String.format("Id: %1$s, : %2$s, : %3$s, : %4$s, : %5$s, : %6$s, : %7$s, : %8$s, : %9$s, : %10$s, : %11$s, : %12$s, : %13$s ", this.getId(), this.getName(), this.getTypeOfPokemon(), this.getTypeOfPokemon2(), this.getTotal(), this.getHp(), this.getAttack(), this.getDefence(), this.getAttack2(), this.getDefence2(), this.getSpeed(), this.getGeneration(), this.isLegendary());  
+	  return String.format("<html><body>Id: %1$s <br> Name: %2$s <br> Type 1: %3$s <br> Type 2: %4$s <br> Total: %5$s <br> HP: %6$s <br> Attack: %7$s <br> Defence: %8$s <br> Attack 2: %9$s <br> Defence 2: %10$s <br> Speed: %11$s <br> Generation: %12$s <br> Legendary: %13$s </html></body>", this.getId(), this.getName(), this.getTypeOfPokemon(), this.getTypeOfPokemon2(), this.getTotal(), this.getHp(), this.getAttack(), this.getDefence(), this.getAttack2(), this.getDefence2(), this.getSpeed(), this.getGeneration(), this.isLegendary());  
 	 }  
 }
