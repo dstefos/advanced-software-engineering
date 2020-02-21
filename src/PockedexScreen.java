@@ -18,16 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class PockedexScreen extends JFrame {
 
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PockedexScreen frame = new PockedexScreen(100, 100, 750, 550, 5, 5, 5, 5);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+
 	}
 	
 //	Render window
@@ -40,7 +31,7 @@ public class PockedexScreen extends JFrame {
 	}
 	
 
-	public PockedexScreen(int x, int y, int width, int height, int borderTop, int borderLeft, int borderBottom, int borderRight) throws IOException {
+	public PockedexScreen(int x, int y, int width, int height, int borderTop, int borderLeft, int borderBottom, int borderRight, Pokemon[] pokemonData) throws IOException {
 		
 //		Render window
 		JPanel app = renderAppWindow(x, y, width, height, borderTop, borderLeft, borderBottom, borderRight);
@@ -48,12 +39,8 @@ public class PockedexScreen extends JFrame {
 //		Render Pokeball icon
 		GUIBuilder.addLabel("Pokedex", Color.WHITE, null, 10, 11 ,100,30,app, "pokeball1.jpg");
 		
-//		Render Play Sound button
-		JButton btnSound=GUIBuilder.addButton("Play Sound", Color.BLACK, Color.RED, 593,351,107,23,app, null, null);
-		
-//		A list containing the name sof the Pokemons 
-		JScrollPane scrollPane = GUIBuilder.addScrollPane(56, 65, 190, 309, app);		
-		Pokemon[] pokemonData= CSVParser.readData("pokemons.csv");
+//		A list containing the names of the Pokemons 
+		JScrollPane scrollPane = GUIBuilder.addScrollPane(56, 65, 190, 309, app);	
 		Object[][] data=new Object[pokemonData.length][1];
 		for(int i=0; i<pokemonData.length; i++) {
 			Pokemon tempPokemon=pokemonData[i];

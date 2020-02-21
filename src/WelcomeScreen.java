@@ -16,22 +16,13 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-public class PokedexPokemon extends JFrame {
+public class WelcomeScreen extends JFrame {
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PokedexPokemon window = new PokedexPokemon(100, 100, 600, 550, 5, 5, 5, 5);
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+
 	}
 
 	/**
@@ -51,7 +42,7 @@ public class PokedexPokemon extends JFrame {
 		return window;
 	}
 	
-	public PokedexPokemon(int x, int y, int width, int height, int borderTop, int borderLeft, int borderBottom, int borderRight) {
+	public WelcomeScreen(int x, int y, int width, int height, int borderTop, int borderLeft, int borderBottom, int borderRight) {
 
 //		Render window
 		JPanel window = renderAppWindow(x, y, width, height, borderTop, borderLeft, borderBottom, borderRight);
@@ -60,11 +51,8 @@ public class PokedexPokemon extends JFrame {
 		JButton btnShowPokedexScreen = GUIBuilder.addButton("Enter Pokedex", Color.BLACK, UIManager.getColor("Button.darkShadow"), 10, 450, 123, 30, window, null, Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnShowPokedexScreen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				PockedexScreen pd;
 				try {
-					pd = new PockedexScreen(100, 100, 753, 549, 5, 5, 5, 5);
-					pd.setVisible(true);
+					Main.showPokedexScreen();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
