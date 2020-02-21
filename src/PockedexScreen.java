@@ -21,7 +21,7 @@ public class PockedexScreen extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PockedexScreen frame = new PockedexScreen(100, 100, 753, 549, 5, 5, 5, 5);
+					PockedexScreen frame = new PockedexScreen(100, 100, 750, 550, 5, 5, 5, 5);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,22 +30,11 @@ public class PockedexScreen extends JFrame {
 		});
 	}
 	
-//	public static void show(int x, int y, int width, int height, int borderTop, int borderLeft, int borderBottom, int borderRight) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-	
+//	Render window
 	private JPanel renderAppWindow(int x, int y, int width, int height, int borderTop, int borderLeft, int borderBottom, int borderRight) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(x, y, width, height);
-		GUIWindow window = new GUIWindow(x, y, width, height, borderTop, borderLeft, borderBottom, borderRight);
+		GUIBuilder window = new GUIBuilder(x, y, width, height, borderTop, borderLeft, borderBottom, borderRight);
 		setContentPane(window);
 		return window;
 	}
@@ -53,17 +42,17 @@ public class PockedexScreen extends JFrame {
 
 	public PockedexScreen(int x, int y, int width, int height, int borderTop, int borderLeft, int borderBottom, int borderRight) throws IOException {
 		
-//		Render main window
-		JPanel app = renderAppWindow(100, 100, 753, 549, 5, 5, 5, 5);
+//		Render window
+		JPanel app = renderAppWindow(x, y, width, height, borderTop, borderLeft, borderBottom, borderRight);
 
 //		Render Pokeball icon
-		GUIWindow.addLabel("Pokedex", Color.WHITE, null, 10, 11 ,100,30,app, "pokeball1.jpg");
+		GUIBuilder.addLabel("Pokedex", Color.WHITE, null, 10, 11 ,100,30,app, "pokeball1.jpg");
 		
 //		Render Play Sound button
-		JButton btnSound=GUIWindow.addButton("Play Sound", Color.BLACK, Color.RED, 593,351,107,23,app, null);
+		JButton btnSound=GUIBuilder.addButton("Play Sound", Color.BLACK, Color.RED, 593,351,107,23,app, null, null);
 		
 //		A list containing the name sof the Pokemons 
-		JScrollPane scrollPane = GUIWindow.addScrollPane(56, 65, 190, 309, app);		
+		JScrollPane scrollPane = GUIBuilder.addScrollPane(56, 65, 190, 309, app);		
 		Pokemon[] pokemonData= CSVParser.readData("pokemons.csv");
 		Object[][] data=new Object[pokemonData.length][1];
 		for(int i=0; i<pokemonData.length; i++) {
@@ -73,13 +62,13 @@ public class PockedexScreen extends JFrame {
 		String[] headers=new String[] {
 				"Pokemon"
 			};
-		JTable pokemonTable=GUIWindow.addTable(scrollPane,data, headers);
+		JTable pokemonTable=GUIBuilder.addTable(scrollPane,data, headers);
 		
 //		Pokemon's Avatar		
-		JLabel pokemonIconLbl = GUIWindow.addLabel("", null, null, 350, 65, 221 ,205, app, null);
+		JLabel pokemonIconLbl = GUIBuilder.addLabel("", null, null, 350, 65, 221 ,205, app, null);
 
 //		Pokemon's name under Avatar
-		JLabel label = GUIWindow.addLabel("", Color.WHITE, null, 350, 281, 220, 210, app, null);
+		JLabel label = GUIBuilder.addLabel("", Color.WHITE, null, 350, 281, 220, 210, app, null);
 		
 //		Listen clicks on the table and load the corresponding image
 		pokemonTable.getSelectionModel().addListSelectionListener(new ListSelectionListener(){

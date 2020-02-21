@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Cursor;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -10,14 +11,14 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-public class GUIWindow extends JPanel{
+public class GUIBuilder extends JPanel{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 	}
 	
-	public GUIWindow(int x, int y, int width, int height, int borderTop, int borderLeft, int borderBottom, int borderRight) {
+	public GUIBuilder(int x, int y, int width, int height, int borderTop, int borderLeft, int borderBottom, int borderRight) {
 //		JPanel window = new JPanel();
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(x, y, width, height);
@@ -43,7 +44,7 @@ public class GUIWindow extends JPanel{
 	}
 
 //	Create a new JButton and add it to a JPanel
-	public static JButton addButton(String caption, Color fontColor, Color backColor, int x, int y, int width, int height, JPanel contentPane, String imgPath) {
+	public static JButton addButton(String caption, Color fontColor, Color backColor, int x, int y, int width, int height, JPanel contentPane, String imgPath, Cursor cursor) {
 		JButton tempButton = new JButton(caption);
 		tempButton.setForeground(fontColor);
 		tempButton.setBackground(backColor);
@@ -52,6 +53,9 @@ public class GUIWindow extends JPanel{
 			tempButton.setIcon(new ImageIcon(PockedexScreen.class.getResource(imgPath)));
 		
 		tempButton.setBounds(x,y,width,height);
+		
+		if(cursor!=null)
+			tempButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		contentPane.add(tempButton);	
 		return tempButton;
 	}
