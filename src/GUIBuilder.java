@@ -19,14 +19,9 @@ public class GUIBuilder extends JPanel{
 	}
 	
 	public GUIBuilder(int x, int y, int width, int height, int borderTop, int borderLeft, int borderBottom, int borderRight) {
-//		JPanel window = new JPanel();
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(x, y, width, height);
 		this.setBackground(Color.DARK_GRAY);
 		this.setBorder(new EmptyBorder(borderTop, borderLeft, borderBottom, borderRight));
-
 		this.setLayout(null);	
-//		return window;
 	}
 	
 //	Create a new JLabel and add it to a JPanel
