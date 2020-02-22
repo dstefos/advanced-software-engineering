@@ -44,14 +44,13 @@ public class CSVParser {
 
 //			Push the newly created Pokemon into the temp Pokemon ArrayList
 			pokemons[i]=tempPokemon;
-//			pokemons.add(tempPokemon);
 		}
 		
 	    return pokemons;
 	}
 	
 	public static void main(String[] args) throws IOException {
-//		CSVParser parser= new CSVParser("pokemons.csv");
+
 		Pokemon[] lista=CSVParser.readData("pokemons.csv");
 		
 //		Print all pokemons in pokemons.csv
