@@ -17,9 +17,21 @@ public class GUIBuilder extends JPanel{
 
 	public static void main(String[] args) {
 		
-		Tester.testFunction("addLabel()", addLabelTest());
-		Tester.testFunction("addButton()", addButtonTest());
-		Tester.testFunction("addScrollPane()", addScrollPaneTest());
+		int failedTestsCount=0;
+
+		System.out.println("Testing addLabel:");
+		failedTestsCount+=Tester.testFunction("addLabel", addLabelTest());
+		
+		System.out.println("Testing addButton");
+		failedTestsCount+=Tester.testFunction("addButton", addButtonTest());
+		
+		System.out.println("Testing addTable");
+		failedTestsCount+=Tester.testFunction("addTable",addTableTest());
+		
+		System.out.println("Testing addScrollPane:");
+		failedTestsCount+=Tester.testFunction("addScrollPane", addScrollPaneTest());
+		
+		System.out.println("Failed: "+failedTestsCount);
 
 	}
 	
@@ -43,31 +55,36 @@ public class GUIBuilder extends JPanel{
 		return tempLabel;
 	}
 	
-	public static ArrayList<String> addLabelTest() {
-		ArrayList<String> errors = new ArrayList<String>(); 
+	public static int addLabelTest() {
+		int errors = 0; 
 		JPanel contentPane=new JPanel();
 		JLabel tempLabel=addLabel("Test Caption", Color.BLUE, Color.RED, 10, 20, 30, 40, contentPane, "pokeball1.jpg");
-		if(contentPane!=tempLabel.getParent())
-			errors.add("Add to parent error");
-		if(tempLabel.getText()!="Test Caption")
-			errors.add("Set Text error");
-		if(tempLabel.getForeground()!=Color.BLUE)
-			errors.add("Set Foreground Color error");
-		if(tempLabel.getBackground()!=Color.RED)
-			errors.add("Set Background Color error");
-		if(tempLabel.getX()!= 10)
-			errors.add("Set X error");
-		if(tempLabel.getY()!= 20)
-			errors.add("Set Y error");
-		if(tempLabel.getWidth() != 30)
-			errors.add("Set Width error");
-		if(tempLabel.getHeight() != 40)
-			errors.add("Set Height error");
+		errors+=Tester.compare("Class", tempLabel.getClass(), new JLabel().getClass());
+			
+		Object expectedClass=new JLabel().getClass();
+		Object gotClass=tempLabel.getClass();
+		errors+=Tester.compare("Class", expectedClass, gotClass);
+			
+		errors+=Tester.compare("Add to parent", contentPane, tempLabel.getParent());
+			
+		errors+=Tester.compare("Set Text", "Test Caption", tempLabel.getText());
+			
+		errors+=Tester.compare("Set Foreground", Color.BLUE, tempLabel.getForeground());
+			
+		errors+=Tester.compare("Set Background", Color.RED, tempLabel.getBackground());
+			
+		errors+=Tester.compare("Set X", 10, tempLabel.getX());
+			
+		errors+=Tester.compare("Set Y", 20, tempLabel.getY());
+			
+		errors+=Tester.compare("Set Width", 30, tempLabel.getWidth());
+			
+		errors+=Tester.compare("Set Height", 40, tempLabel.getHeight());
+			
 		
 		String resultIcon=tempLabel.getIcon().toString();
 		String expectedIcon=new ImageIcon(GUIBuilder.class.getResource("pokeball1.jpg")).toString();
-		if(!resultIcon.equals(expectedIcon))
-			errors.add("Set Icon error expected: "+expectedIcon+" but got "+resultIcon);
+		errors+=Tester.compare("Set Icon", expectedIcon, resultIcon);
 		return errors;
 	}
 
@@ -88,33 +105,36 @@ public class GUIBuilder extends JPanel{
 		return tempButton;
 	}
 	
-	public static ArrayList<String> addButtonTest() {
-		ArrayList<String> errors = new ArrayList<String>(); 
+	public static int addButtonTest() {
+		int errors = 0; 
 		JPanel contentPane=new JPanel();
 		JButton tempButton=addButton("Test Caption", Color.BLUE, Color.RED, 10, 20, 30, 40, contentPane, "pokeball1.jpg", Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		if(contentPane!=tempButton.getParent())
-			errors.add("Add to parent error");
-		if(tempButton.getText()!="Test Caption")
-			errors.add("Set Text error");
-		if(tempButton.getForeground()!=Color.BLUE)
-			errors.add("Set Foreground Color error");
-		if(tempButton.getBackground()!=Color.RED)
-			errors.add("Set Background Color error");
-		if(tempButton.getX()!= 10)
-			errors.add("Set X error");
-		if(tempButton.getY()!= 20)
-			errors.add("Set Y error");
-		if(tempButton.getWidth() != 30)
-			errors.add("Set Width error");
-		if(tempButton.getHeight() != 40)
-			errors.add("Set Height error");
+		Object expectedClass=new JButton().getClass();
+		Object gotClass=tempButton.getClass();
+		errors+=Tester.compare("Class", expectedClass, gotClass);
+			
+		errors+=Tester.compare("Add to parent", contentPane, tempButton.getParent());
+			
+		errors+=Tester.compare("Set Text", "Test Caption", tempButton.getText());
+			
+		errors+=Tester.compare("Set Foreground", Color.BLUE, tempButton.getForeground());
+			
+		errors+=Tester.compare("Set Background", Color.RED, tempButton.getBackground());
+			
+		errors+=Tester.compare("Set X", 10, tempButton.getX());
+			
+		errors+=Tester.compare("Set Y", 20, tempButton.getY());
+			
+		errors+=Tester.compare("Set Width", 30, tempButton.getWidth());
+			
+		errors+=Tester.compare("Set Height", 40, tempButton.getHeight());
+			
 		
 		String resultIcon=tempButton.getIcon().toString();
 		String expectedIcon=new ImageIcon(GUIBuilder.class.getResource("pokeball1.jpg")).toString();
-		if(!resultIcon.equals(expectedIcon))
-			errors.add("Set Icon error expected: "+expectedIcon+" but got "+resultIcon);
-		if(tempButton.getCursor()!=Cursor.getPredefinedCursor(Cursor.HAND_CURSOR))
-			errors.add("Set Cursor error");
+		errors+=Tester.compare("Set Icon", expectedIcon, resultIcon);
+		errors+=Tester.compare("Set Cursor", tempButton.getCursor(), Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
 		return errors;
 	}
 	
@@ -138,6 +158,41 @@ public class GUIBuilder extends JPanel{
 		return tempTable;
 	}	
 	
+	public static int addTableTest() {
+		int errors = 0; 
+		JScrollPane tableContainer=new JScrollPane();
+		String[] headers= {
+				"First",
+				"Second"
+		};
+		Object[][] data= {
+				{"FirstFirst", "FirstSecond"},
+				{"SecondFirst", "SecondSecond"}
+		};
+		JTable tempTable=addTable(tableContainer, data, headers);
+		Object expectedClass=new JTable().getClass();
+		Object gotClass=tempTable.getClass();
+		errors+=Tester.compare("Class", expectedClass, gotClass);
+
+		errors+=Tester.compare("Add to parent", tableContainer, tempTable.getParent().getParent());
+
+		errors+=Tester.compare("Table data", Arrays.deepEquals(getTableData(tempTable), data), true);
+		
+		errors+=Tester.compare("First column resizable", tempTable.getColumnModel().getColumn(0).getResizable(), false);
+		
+		return errors;
+	}
+	
+	private static Object[][] getTableData (JTable table) {
+	    DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+	    int nRow = dtm.getRowCount(), nCol = dtm.getColumnCount();
+	    Object[][] tableData = new Object[nRow][nCol];
+	    for (int i = 0 ; i < nRow ; i++)
+	        for (int j = 0 ; j < nCol ; j++)
+	            tableData[i][j] = dtm.getValueAt(i,j);
+	    return tableData;
+	}
+	
 	
 //  Create a new JScrollPane and add it to a JPanel
 	public static JScrollPane addScrollPane( int x, int y, int width, int height, JPanel contentPane) {
@@ -147,20 +202,20 @@ public class GUIBuilder extends JPanel{
 		return scrollPane;
 	}
 	
-	public static ArrayList<String> addScrollPaneTest() {
-		ArrayList<String> errors = new ArrayList<String>(); 
+	public static int addScrollPaneTest() {
+		int errors=0;
 		JPanel contentPane=new JPanel();
 		JScrollPane tempScrollPane=addScrollPane(10,20,30,40,contentPane);
-		if(contentPane!=tempScrollPane.getParent())
-			errors.add("Add to parent error");
-		if(tempScrollPane.getX()!= 10)
-			errors.add("Set X error");
-		if(tempScrollPane.getY()!= 20)
-			errors.add("Set Y error");
-		if(tempScrollPane.getWidth() != 30)
-			errors.add("Set Width error");
-		if(tempScrollPane.getHeight() != 40)
-			errors.add("Set Height error");
+		errors+=Tester.compare("Add to parent", contentPane, tempScrollPane.getParent());
+			
+		errors+=Tester.compare("Set X", 10, tempScrollPane.getX());
+			
+		errors+=Tester.compare("Set Y", 20, tempScrollPane.getY());
+			
+		errors+=Tester.compare("Set Width", 30, tempScrollPane.getWidth());
+			
+		errors+=Tester.compare("Set Height", 40, tempScrollPane.getHeight());
+			
 		return errors;
 	}
 	
