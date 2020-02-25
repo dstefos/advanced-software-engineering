@@ -8,9 +8,12 @@ public class Tester {
 
 		
 		int failedTestsCount=0;
-		
+
+		System.out.println("Testing GUIBuilder");
+		System.out.println();
 		failedTestsCount+=GUIBuilder.test()>0?1:0;
 		System.out.println();
+		System.out.println("Testing CSVParser");
 		failedTestsCount+=CSVParser.test()>0?1:0;
 		
 		System.out.println();
