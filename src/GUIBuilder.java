@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class GUIBuilder extends JPanel{
 
-	public static void main(String[] args) {
+	public static int test() {
 		
 		int failedTestsCount=0;
 
@@ -32,6 +32,9 @@ public class GUIBuilder extends JPanel{
 		failedTestsCount+=Tester.testFunction("addScrollPane", addScrollPaneTest());
 		
 		System.out.println("Failed: "+failedTestsCount);
+
+		System.out.println();
+		return failedTestsCount;
 
 	}
 	

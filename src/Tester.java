@@ -1,11 +1,27 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Tester {
+	
+	public static void main(String[] args) throws IOException {
+
+		
+		int failedTestsCount=0;
+		
+		failedTestsCount+=GUIBuilder.test()>0?1:0;
+		System.out.println();
+		failedTestsCount+=CSVParser.test()>0?1:0;
+		
+		System.out.println();
+		System.out.println("Total Functions Failed: "+failedTestsCount);
+	}
+	
 	public static int testFunction(String msg, int errors) {
 		System.out.println("Testing "+msg+": ");
 		if(errors>0) {
 			System.out.println("Errors count: "+errors);
+			System.out.println();
 			return 1;
 		}
 		

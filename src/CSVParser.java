@@ -49,13 +49,31 @@ public class CSVParser {
 	    return pokemons;
 	}
 	
-	public static void main(String[] args) throws IOException {
+	public static int readDataTest() throws IOException {
+		int errors = 0; 
+		Pokemon pokemons[] = readData("test.csv");
+		Pokemon bulbasaur=new Pokemon(1,"Bulbasaur","Grass","Poison",318,45,49,49,65,65,45,1,false);
+		Pokemon ivysaur=new Pokemon(2,"Ivysaur","Grass","Poison",405,60,62,63,80,80,60,1,false);
+		Pokemon venusaur=new Pokemon(3,"Venusaur","Grass","Poison",525,80,82,83,100,100,80,1,false);
 
-		Pokemon[] lista=CSVParser.readData("pokemons.csv");
+		errors+=Tester.compare("Bulbasaur", bulbasaur.toString(), pokemons[0].toString());
+		errors+=Tester.compare("Ivysaur", ivysaur.toString(), pokemons[1].toString());
+		errors+=Tester.compare("Venusaur", venusaur.toString(), pokemons[2].toString());
 		
-//		Print all pokemons in pokemons.csv
-		for(Pokemon tempPokemon: lista) 
-			System.out.println(tempPokemon);
+		return errors;
 		
+	}
+	
+	public static int test() throws IOException {
+		
+		int failedTestsCount=0;
+
+		System.out.println("Testing readData:");
+		failedTestsCount+=Tester.testFunction("readData", readDataTest());
+		
+		System.out.println("Failed: "+failedTestsCount);
+		
+		return failedTestsCount;
+
 	}
 }
